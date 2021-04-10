@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manager home</title>
+</head>
+<body>
+<p th:text="'Hello, Manager ' + ${username} + '!'" />
+<a href="/sign-out">Sign out</a>
+
+
+<h3>Products </h3>
+<table>
+    <tr th:each="pr: ${products}">
+        <td th:text="${pr.id}" />
+        <td th:text="${pr.name}" />
+        <td th:text="${pr.price}" />
+    </tr>
+
+</table>
+<a href="/add-product">Add product</a>
+<br>
+<br>
+
+<h3>Tables </h3>
+<table>
+    <tr th:each="tb: ${tables}">
+        <td th:text="${tb.id}" />
+        <td th:text="${tb.name}" />
+        <td th:text="${tb.waiter.getUsername()}" />
+        <td th:text="${tb.tableStatus}" />
+    </tr>
+
+</table>
+<a href="/add-table">Add Table</a>
+<br>
+<br>
+
+<h3>Waiters </h3>
+<table>
+    <tr th:each="wa: ${waiters}">
+
+        <td th:text="${wa.getUsername()}" />
+        <td th:text="${wa.getEmail()}" />
+
+    </tr>
+
+</table>
+
+<a href="/add-user">Add User</a>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Waiter home</title>
+</head>
+<body>
+<p th:text="'Hello, Waiter ' + ${username} + '!'"/>
+<a href="/sign-out">Sign out</a>
+
+<h3>Orders </h3>
+<table>
+    <tr th:each="order: ${orders}">
+        <td th:text="${order.status}"/>
+        <td th:text="${order.getProducts()}"/>
+        <td><a th:href="@{'/edit-order/' + ${order.id}}">Edit</a></td>
+    </tr>
+
+</table>
+<a href="/add-order">Add Order</a>
+
+<br>
+
+<h3>Tables </h3>
+<table>
+    <tr th:each="tb: ${tables}">
+        <td th:text="${tb.id}"/>
+        <td th:text="${tb.name}"/>
+        <td th:text="${tb.waiter.getUsername()}"/>
+        <td th:text="${tb.tableStatus}"/>
+    </tr>
+
+</table>
+
+</body>
+</html>
